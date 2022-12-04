@@ -12,14 +12,17 @@ namespace BehaviorTree
         {
             foreach (Node node in children)
             {
-                switch (Evaluate())
+                switch (node.Evaluate())
                 {
                     case NodeState.FAILURE:
+                        Debug.Log("fail");
                         continue;
                     case NodeState.SUCCESS:
                         state = NodeState.SUCCESS;
+                        Debug.Log("succ");
                         return state;
                     case NodeState.RUNNING:
+                        Debug.Log("runn");
                         state = NodeState.RUNNING;
                         return state;
                     default:
@@ -29,6 +32,7 @@ namespace BehaviorTree
             }
 
             state = NodeState.FAILURE;
+            Debug.Log(state);
             return state;
         }
     }

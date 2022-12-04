@@ -14,7 +14,7 @@ namespace BehaviorTree
 
             foreach (Node node in children)
             {
-                switch (Evaluate())
+                switch (node.Evaluate())
                 {
                     case NodeState.FAILURE:
                         state = NodeState.FAILURE;
