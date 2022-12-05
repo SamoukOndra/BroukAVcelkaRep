@@ -7,16 +7,16 @@ using UnityEngine.AI;
 public class TargetRandomLocation : Node
 {
     //[SerializeField] GameObject ant;
-    [SerializeField] float _searchRadius = 20.0f;
+    public float _searchRadius = 200.0f;
     private Transform _transform;
     private NavMeshAgent _agent;
 
     private Vector3 _targetPosition;
 
-    public TargetRandomLocation(Transform transform/*, NavMeshAgent agent*/)
+    public TargetRandomLocation(Transform transform, NavMeshAgent agent)
     {
         _transform = transform;
-        //_agent = agent;
+        _agent = agent;
     }
 
     public override NodeState Evaluate()
@@ -24,10 +24,10 @@ public class TargetRandomLocation : Node
         object t = GetData("target");
         if (t == null)
         {
-            _targetPosition = RandomNavmeshLocation(_searchRadius);
+            _targetPosition = RandomNavmeshLocation(AntStats.randomSearchRadius);
             parent.SetData("target", _targetPosition);
-            //_agent.destination = _targetPosition;
-            Debug.Log("Target set");
+            _agent.destination = _targetPosition;
+            //Debug.Log("Target set");
             return NodeState.SUCCESS;
         }
         else return NodeState.FAILURE;
