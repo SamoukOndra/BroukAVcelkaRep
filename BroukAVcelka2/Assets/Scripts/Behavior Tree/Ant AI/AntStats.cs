@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class AntStats : MonoBehaviour
 {
+    [SerializeField] private LayerMask rayIgnoreObstructions;
+
+    public Transform playerTransform;
     public const int playerLayerMask = 1 << 6;
+    //public const int antLayerMask = 1 << 8;
     public Vector3 lastKnownPlayerPosition;
 
     public static float randomSearchRadius = 60.0f;
@@ -18,10 +22,10 @@ public class AntStats : MonoBehaviour
 
     [Range(-1.0f,1.0f)]
     public float dotProductFOV = -0.2f;
-    public float rangeFOV = 5.0f;
+    public float rangeFOV = 50.0f;
     public Vector3 headOffset = new Vector3 (0.0f, 1.1f, 1.1f);
     public float rotateTowardsSpeed = 1.0f;
-    
+
 
 
     /*private void Update()
@@ -37,8 +41,8 @@ public class AntStats : MonoBehaviour
 
     public bool IsFOVObstructed(Vector3 targetPosition)
     {
-        bool isFOVObstructed = Physics.Raycast(transform.position + transform.TransformPoint(headOffset), targetPosition, rangeFOV, playerLayerMask);
-        Debug.DrawRay(transform.position + transform.TransformPoint(headOffset), targetPosition, Color.yellow, 1);
+        bool isFOVObstructed = Physics.Raycast(transform.position/* + transform.InverseTransformPoint(headOffset)*/, targetPosition - transform.position, rangeFOV, ~rayIgnoreObstructions);
+        Debug.DrawRay(transform.position/* + transform.InverseTransformPoint(headOffset)*/, targetPosition - transform.position, Color.yellow, 1);
         return isFOVObstructed;
     }
 
@@ -47,9 +51,9 @@ public class AntStats : MonoBehaviour
         if (isRising)
         {
             currentAlertLevel += Time.deltaTime;
-            float singleStep = rotateTowardsSpeed * Time.deltaTime;
+            /*float singleStep = rotateTowardsSpeed * Time.deltaTime;
             //Vector3 forwardDirection = Vector3.R
-            transform.forward = Vector3.RotateTowards(transform.forward, targetPosition, singleStep, 0.0f);
+            transform.forward = Vector3.RotateTowards(transform.forward, targetPosition, singleStep, 0.0f);*/
         }
         else currentAlertLevel -= Time.deltaTime;
         if (currentAlertLevel > maxAlertLevel) currentAlertLevel = maxAlertLevel;

@@ -15,6 +15,7 @@ public class CheckIsAlerted : Node
 
     public override NodeState Evaluate()
     {
+        ClearData("player in FOV range");
         if (_antStats.currentAlertLevel > 0.0f) return NodeState.SUCCESS;
         else return NodeState.FAILURE;
     }

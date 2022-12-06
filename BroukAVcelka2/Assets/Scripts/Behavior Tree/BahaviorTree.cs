@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BehaviorTree
 {
-    public abstract class Tree : MonoBehaviour
+    public abstract class BahaviorTree : MonoBehaviour
     {
         private Node _root = null;
 

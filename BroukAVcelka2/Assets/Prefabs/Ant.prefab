@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 906006567618484394}
   - component: {fileID: 6253347553696848463}
   - component: {fileID: 8206117821020470640}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ant Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,8 @@ GameObject:
   - component: {fileID: 2163921262545671826}
   - component: {fileID: 426111965}
   - component: {fileID: 426111966}
-  m_Layer: 0
+  - component: {fileID: 426111967}
+  m_Layer: 8
   m_Name: Ant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,3 +152,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3610bd1495737774898eaee1aecfa84a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &426111967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5256763518125500414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3498bcb805e375341a2a36aa7c0d3a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayIgnoreObstructions:
+    serializedVersion: 2
+    m_Bits: 0
+  playerTransform: {fileID: 0}
+  lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
+  currentStorageUsage: 0
+  playerInSight: 0
+  maxAlertLevel: 2
+  currentAlertLevel: 0
+  dotProductFOV: -0.2
+  rangeFOV: 20
+  headOffset: {x: 0, y: 1.1, z: 1.1}
+  rotateTowardsSpeed: 1

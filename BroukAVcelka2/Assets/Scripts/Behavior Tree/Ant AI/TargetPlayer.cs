@@ -16,6 +16,7 @@ public class TargetPlayer : Node
 
     public override NodeState Evaluate()
     {
+        ClearData("target");
         _agent.destination = _antStats.lastKnownPlayerPosition;
         return NodeState.SUCCESS;
     }
