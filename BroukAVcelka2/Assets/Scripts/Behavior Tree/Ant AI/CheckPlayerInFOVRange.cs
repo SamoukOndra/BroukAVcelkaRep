@@ -44,9 +44,10 @@ public class CheckPlayerInFOVRange : Node
 
     private bool PlayerInFOVRange()
     {
-        Collider[] playerCollider = Physics.OverlapSphere(_transform.position,_antStats.rangeFOV, ~AntStats.playerLayerMask);
+        //Collider[] playerCollider = Physics.OverlapSphere(_transform.position,_antStats.rangeFOV, ~AntStats.playerLayerMask);
         //Debug.Log(Vector3.Dot(_transform.forward, (_playerTransform.position - _transform.position).normalized));
-        if (playerCollider.Length > 1 && (Vector3.Dot(_transform.forward, (_playerTransform.position - _transform.position).normalized) > _antStats.dotProductFOV))
+        //if (playerCollider.Length > 1 && (Vector3.Dot(_transform.forward, (_playerTransform.position - _transform.position).normalized) > _antStats.dotProductFOV))
+        if (_antStats.playerInSightRange && (Vector3.Dot(_transform.forward, (_playerTransform.position - _transform.position).normalized) > _antStats.dotProductFOV))
         {
             
             if (_antStats.IsFOVObstructed(_playerTransform.position))

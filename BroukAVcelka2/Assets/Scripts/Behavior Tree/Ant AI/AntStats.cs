@@ -5,6 +5,8 @@ using UnityEngine;
 public class AntStats : MonoBehaviour
 {
     [SerializeField] private LayerMask rayIgnoreObstructions;
+    [SerializeField] GameObject antSight;
+    private SphereCollider _sightRangeTrigger;
 
     public Transform playerTransform;
     public const int playerLayerMask = 1 << 6;
@@ -16,6 +18,7 @@ public class AntStats : MonoBehaviour
     public static float maxStorageCapacity = 100.0f;
     public float currentStorageUsage;
 
+    public bool playerInSightRange;
     public bool playerInSight;
     public float maxAlertLevel = 2.0f;
     public float currentAlertLevel = 0.0f;
@@ -26,7 +29,20 @@ public class AntStats : MonoBehaviour
     public Vector3 headOffset = new Vector3 (0.0f, 1.1f, 1.1f);
     public float rotateTowardsSpeed = 1.0f;
 
+    private void Awake()
+    {
+        _sightRangeTrigger = antSight.GetComponent<SphereCollider>();
+        _sightRangeTrigger.radius = rangeFOV;
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        playerInSightRange = true;
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        playerInSightRange = false;
+    }
 
     /*private void Update()
     {

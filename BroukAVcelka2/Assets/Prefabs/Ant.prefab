@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1690677366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1690677368}
+  - component: {fileID: 1690677367}
+  m_Layer: 9
+  m_Name: AntSight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1690677368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690677366}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2163921262545671826}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1690677367
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690677366}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 50
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &712295188342650854
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,6 +140,7 @@ GameObject:
   - component: {fileID: 426111965}
   - component: {fileID: 426111966}
   - component: {fileID: 426111967}
+  - component: {fileID: 426111968}
   m_Layer: 8
   m_Name: Ant
   m_TagString: Untagged
@@ -115,6 +161,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 906006567618484394}
+  - {fileID: 1690677368}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -166,14 +213,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayIgnoreObstructions:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 320
+  antSight: {fileID: 1690677366}
   playerTransform: {fileID: 0}
   lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
   currentStorageUsage: 0
+  playerInSightRange: 0
   playerInSight: 0
-  maxAlertLevel: 2
+  maxAlertLevel: 5
   currentAlertLevel: 0
   dotProductFOV: -0.2
   rangeFOV: 20
   headOffset: {x: 0, y: 1.1, z: 1.1}
   rotateTowardsSpeed: 1
+--- !u!114 &426111968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5256763518125500414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac9a528c62172647a6f4539699dbdda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  degreesPerSecond: 90
